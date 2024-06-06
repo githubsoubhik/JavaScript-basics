@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       <ul class="language">
+          <li>JavaScript</li>
+
+       </ul>
+</body>
+
+
+<script>
+
+ 
+
+    function addli(lang){
+
+        const li = document.createElement("li");
+
+        console.log(li);
+        li.innerHTML=`${lang}`;
+        const ul= document.querySelector('.language');
+         ul.appendChild(li);
+    }
+
+    addli('typeScript');
+    addli('java');
+</script>
+</html>
