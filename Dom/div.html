@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Create Div</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    //create div element
+
+   let a = document.createElement("div");
+
+    console.log(a);
+     
+    document.body.appendChild(a)
+
+    // Adding text
+    
+    //div.innerText = "Adding Div";
+
+    const  addtext =  document.createTextNode("Adding Div");
+
+   a.appendChild(addtext);
+
+   //adding background color
+    a.style.backgroundColor ="green"
+    a.style.padding="4px"
+    a.style.color = "white"
+
+    a.className ="color"
+
+    a.id = "maindiv"
+
+  
+</script>
