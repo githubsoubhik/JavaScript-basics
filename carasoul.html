@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Carousel</title>
+ <style>
+    .carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel {
+    width: 80%;
+    margin: 20px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.carousel-item {
+    display: inline-block;
+    padding: 10px;
+    background: #f1f1f1;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.carousel-item.active {
+    background: #007bff;
+    color: #fff;
+}
+
+ </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div id="carousel-column-c" class="carousel">
+            <!-- Column C Items will be displayed here -->
+        </div>
+        <div id="carousel-column-b" class="carousel">
+            <!-- Column B Items will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+   const data = [
+    {
+        c: "Server",
+        b: [
+            { name: "HPE", img: "path/to/hpe.jpg" },
+            { name: "DELL", img: "path/to/dell.jpg" },
+            { name: "Lenovo", img: "path/to/lenovo.jpg" }
+        ]
+    },
+    {
+        c: "Desktop",
+        b: [
+            { name: "Assembled", img: "path/to/assembled.jpg" },
+            { name: "Acer", img: "path/to/acer.jpg" },
+            { name: "Asus", img: "path/to/asus.jpg" }
+        ]
+    },
+    {
+        c: "Laptop",
+        b: [
+            { name: "Apple", img: "path/to/apple.jpg" },
+            { name: "Microsoft Surface", img: "path/to/microsoft_surface.jpg" },
+            { name: "Fujitsu", img: "path/to/fujitsu.jpg" },
+            { name: "Samsung", img: "path/to/samsung.jpg" },
+            { name: "LG", img: "path/to/lg.jpg" }
+        ]
+    },
+    // Add other rows similarly with images
+];
+
+let currentIndex = 0;
+const cCarousel = document.getElementById('carousel-column-c');
+const bCarousel = document.getElementById('carousel-column-b');
+
+function displayItems(index) {
+    const currentData = data[index];
+    cCarousel.innerHTML = `<div class="carousel-item active">${currentData.c}</div>`;
+    bCarousel.innerHTML = currentData.b.map(item => `
+        <div class="carousel-item">
+            <img src="${item.img}" alt="${item.name}">
+            <p>${item.name}</p>
+        </div>
+    `).join('');
+}
+
+function next() {
+    currentIndex = (currentIndex + 1) % data.length;
+    displayItems(currentIndex);
+}
+
+function startCarousel() {
+    displayItems(currentIndex);
+    setInterval(next, 3000); // Change item every 3 seconds
+}
+
+document.addEventListener('DOMContentLoaded', startCarousel);
+
+    </script>
+</body>
+</html>
